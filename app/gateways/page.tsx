@@ -109,7 +109,6 @@ function buildConfigSchemaPayload(cs: ConfigSchemaForm): object {
 
 function buildValidationEndpointPayload(ve: ValidationEndpointForm): unknown {
   if (!ve.test && !ve.live) return undefined
-  if (ve.test === ve.live && ve.test) return ve.test
   return { test: ve.test || undefined, live: ve.live || undefined }
 }
 
