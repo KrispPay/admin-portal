@@ -342,18 +342,19 @@ export default function GatewaysPage() {
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-border text-left">
-              {['Name', 'Code', 'Status', 'Currencies', 'Actions'].map((h) => (
+              {['SN', 'Name', 'Code', 'Status', 'Currencies', 'Actions'].map((h) => (
                 <th key={h} className={`px-4 py-3 text-xs text-muted font-medium uppercase tracking-wider${h === 'Actions' ? ' text-right' : ''}`}>{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {loading ? (
-              <tr><td colSpan={5} className="px-4 py-10 text-center text-muted">Loading...</td></tr>
+              <tr><td colSpan={6} className="px-4 py-10 text-center text-muted">Loading...</td></tr>
             ) : filtered.length === 0 ? (
-              <tr><td colSpan={5} className="px-4 py-10 text-center text-muted">{search ? 'No gateways match.' : 'No gateways found.'}</td></tr>
-            ) : filtered.map((gw) => (
+              <tr><td colSpan={6} className="px-4 py-10 text-center text-muted">{search ? 'No gateways match.' : 'No gateways found.'}</td></tr>
+            ) : filtered.map((gw, idx) => (
               <tr key={gw.id} className="border-b border-border/50 hover:bg-white/2">
+                <td className="px-4 py-3 text-xs text-muted w-10">{idx + 1}</td>
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-2">
                     {gw.logoUrl && <img src={gw.logoUrl as string} alt="" className="w-5 h-5 rounded object-contain" />}
